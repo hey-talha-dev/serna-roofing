@@ -4,46 +4,68 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#0A2540" />
-<title>The Perfect Roofs — Roofing Done Right</title>
-<meta name="description" content="The Perfect Roofs — premium roof installation, repair, replacement and maintenance. Built to last, finished to perfection." />
+<title id="pageTitle">Loading…</title>
+<meta name="description" id="metaDesc" content="" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 
-<!-- image fallback engine must exist before any inline onerror fires -->
 <script>
+/* =============================================================
+   ★  GLOBAL CONFIG — CHANGE THESE ONCE, ENTIRE SITE UPDATES  ★
+   ============================================================= */
+const BIZ = {
+  name       : "Serna Roofing",
+  tagline    : "Your Roof Specialists",
+  phone      : "(626) 764-1321",
+  email      : "aasernaroofing@gmail.com",
+  hours      : "Always Open",
+  coverage   : "Los Angeles, CA, United States & surrounding areas",
+  copyright  : "All rights reserved.",
+  // Hero section
+  heroEyebrow: "Licensed · Insured · Warranty Backed",
+  heroTitle1 : "Roofs Built to",
+  heroTitle2 : "Last a Lifetime",           // gets gradient
+  heroDesc   : "From the first inspection to the final nail, we deliver precision craftsmanship, premium materials and a finish that protects everything beneath it.",
+  // Meta
+  metaDesc   : "premium roof installation, repair, replacement and maintenance. Built to last, finished to perfection.",
+  // Social links (set "#" to hide or put real URLs)
+  facebook   : "https://www.facebook.com/p/Serna-Roofing-61573439050978/",
+  instagram  : "#",
+  twitter    : "#",
+  linkedin   : "#",
+  };
+
+/* helper: returns business name everywhere */
+function B(){ return BIZ.name; }
+
+/* image fallback engine */
 function imgErr(el){
   var fb=(el.getAttribute('data-fb')||'').split('|').filter(Boolean);
   if(fb.length){ el.setAttribute('data-fb', fb.slice(1).join('|')); el.src=fb[0]; return; }
-  var p=el.parentNode; if(p){p.classList.add('fail');} el.remove();
+  var p=el.parentNode; if(p) p.classList.add('fail'); el.remove();
 }
 function imgOk(el){ if(el.parentNode) el.parentNode.classList.add('loaded'); }
 </script>
 
 <style>
-/* ============================================================
-   0. RESET & TOKENS
-============================================================ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --navy:#0A2540; --ink:#10273F; --muted:#5E7489;
-  --blue:#0E6BE8; --blue-d:#0A4FB4; --blue-l:#E8F1FF;
-  --green:#14A85C; --green-d:#0E8A4A; --green-l:#E6F7EE;
-  --white:#fff; --soft:#F6F9FD; --line:#E3EBF4;
+  --navy:#0A2540;--ink:#10273F;--muted:#5E7489;
+  --blue:#0E6BE8;--blue-d:#0A4FB4;--blue-l:#E8F1FF;
+  --green:#14A85C;--green-d:#0E8A4A;--green-l:#E6F7EE;
+  --white:#fff;--soft:#F6F9FD;--line:#E3EBF4;
   --shadow-s:0 4px 14px rgba(10,37,64,.06);
   --shadow-m:0 18px 40px -18px rgba(10,37,64,.25);
   --shadow-l:0 40px 80px -30px rgba(10,37,64,.35);
-  --r:18px; --ease:cubic-bezier(.16,1,.3,1); --max:1200px;
+  --r:18px;--ease:cubic-bezier(.16,1,.3,1);--max:1200px;
 }
 html,body{max-width:100%;overflow-x:hidden}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{
-  font-family:'Manrope',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  color:var(--ink);background:var(--white);line-height:1.7;font-size:16.5px;
-  -webkit-font-smoothing:antialiased;
-}
+body{font-family:'Manrope',system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color:var(--ink);background:var(--white);line-height:1.7;font-size:16.5px;-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{font-family:'Sora','Manrope',sans-serif;line-height:1.14;color:var(--navy);font-weight:700;letter-spacing:-.02em}
 h1{font-size:clamp(2.05rem,6.2vw,4.4rem)}
 h2{font-size:clamp(1.72rem,4.6vw,3.1rem)}
@@ -56,34 +78,20 @@ section{position:relative}
 .wrap{width:min(100% - 2.2rem,var(--max));margin-inline:auto}
 @media(min-width:600px){.wrap{width:min(100% - 3rem,var(--max))}}
 .sec{padding:clamp(64px,10vw,130px) 0}
-.sec-soft{background:
-   radial-gradient(900px 500px at 10% -10%,var(--blue-l),transparent 60%),
-   radial-gradient(800px 500px at 95% 110%,var(--green-l),transparent 60%),
-   var(--soft)}
+.sec-soft{background:radial-gradient(900px 500px at 10% -10%,var(--blue-l),transparent 60%),
+  radial-gradient(800px 500px at 95% 110%,var(--green-l),transparent 60%),var(--soft)}
 ::selection{background:var(--blue);color:#fff}
 
-/* ============================================================
-   1. REVEAL ENGINE
-============================================================ */
-.rv{opacity:0;transform:translate3d(0,42px,0);
-    transition:opacity 1s var(--ease),transform 1.1s var(--ease);
-    transition-delay:var(--d,0ms);will-change:transform,opacity}
-.rv.l{transform:translate3d(-50px,0,0)}
-.rv.r{transform:translate3d(50px,0,0)}
-.rv.z{transform:scale(.92)}
+/* reveal */
+.rv{opacity:0;transform:translate3d(0,42px,0);transition:opacity 1s var(--ease),transform 1.1s var(--ease);transition-delay:var(--d,0ms);will-change:transform,opacity}
+.rv.l{transform:translate3d(-50px,0,0)}.rv.r{transform:translate3d(50px,0,0)}.rv.z{transform:scale(.92)}
 .rv.in{opacity:1;transform:none}
 .line-mask{display:block;overflow:hidden;padding-bottom:.06em}
 .line-mask>span{display:block;transform:translateY(110%);transition:transform 1.1s var(--ease);transition-delay:var(--d,0ms)}
 .line-mask.in>span{transform:translateY(0)}
-@media (prefers-reduced-motion:reduce){
-  .rv,.line-mask>span{opacity:1!important;transform:none!important;transition:none!important}
-  html{scroll-behavior:auto}
-  *{animation-duration:.001ms!important;animation-iteration-count:1!important}
-}
+@media(prefers-reduced-motion:reduce){.rv,.line-mask>span{opacity:1!important;transform:none!important;transition:none!important}html{scroll-behavior:auto}*{animation-duration:.001ms!important;animation-iteration-count:1!important}}
 
-/* ============================================================
-   2. PHOTO HOLDER  (loading / fallback states)
-============================================================ */
+/* photo holder */
 .ph{position:relative;overflow:hidden;background:linear-gradient(135deg,#E8F1FF,#E6F7EE);isolation:isolate}
 .ph::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;
   background:linear-gradient(100deg,transparent 18%,rgba(255,255,255,.6) 50%,transparent 82%);
@@ -97,9 +105,7 @@ section{position:relative}
 .ph.fail::before{content:"";position:absolute;inset:0;opacity:.4;
   background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'><path d='M2 11 12 3l10 8'/><path d='M5 10v10h14V10'/><path d='M9.5 20v-6h5v6'/></svg>") center/64px no-repeat}
 
-/* ============================================================
-   3. SHARED UI
-============================================================ */
+/* shared ui */
 .eyebrow{display:inline-flex;align-items:center;gap:.55rem;font-size:.74rem;font-weight:800;
   letter-spacing:.15em;text-transform:uppercase;color:var(--blue);
   background:var(--blue-l);border:1px solid #D4E4FF;padding:.48rem .95rem;border-radius:100px}
@@ -118,8 +124,7 @@ section{position:relative}
   transition:transform .45s var(--ease),box-shadow .45s var(--ease),color .3s,background .3s,border-color .3s;
   font-family:inherit;-webkit-tap-highlight-color:transparent}
 .btn svg{width:17px;height:17px;flex:none;transition:transform .45s var(--ease)}
-.btn:hover{transform:translateY(-3px)}
-.btn:hover svg{transform:translateX(4px)}
+.btn:hover{transform:translateY(-3px)}.btn:hover svg{transform:translateX(4px)}
 .btn-p{background:linear-gradient(120deg,var(--blue),var(--blue-d));color:#fff;box-shadow:0 14px 28px -12px rgba(14,107,232,.75)}
 .btn-p::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg,var(--green),var(--green-d));opacity:0;transition:opacity .45s}
 .btn-p:hover::after{opacity:1}
@@ -129,9 +134,7 @@ section{position:relative}
 .btn-w{background:#fff;color:var(--blue);box-shadow:0 16px 30px -14px rgba(0,0,0,.4)}
 .btn-w:hover{color:var(--green-d)}
 
-/* ============================================================
-   4. PROGRESS + HEADER
-============================================================ */
+/* progress + header */
 #bar{position:fixed;top:0;left:0;height:3px;width:0;z-index:999;
   background:linear-gradient(90deg,var(--blue),var(--green));box-shadow:0 0 14px rgba(14,107,232,.6)}
 header{position:fixed;inset:0 0 auto;z-index:900;padding:16px 0;
@@ -165,7 +168,6 @@ header.stuck .burger span{background:var(--navy)}
 .burger.x span:nth-child(1){transform:translateY(4.5px) rotate(45deg)}
 .burger.x span:nth-child(2){opacity:0}
 .burger.x span:nth-child(3){transform:translateY(-4.5px) rotate(-45deg)}
-
 .mob{position:fixed;inset:0;z-index:890;background:linear-gradient(160deg,#07203A,#0A2540 58%,#0B3F33);
   display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.1rem;text-align:center;
   padding:96px 22px 40px;overflow-y:auto;-webkit-overflow-scrolling:touch;
@@ -177,26 +179,19 @@ header.stuck .burger span{background:var(--navy)}
 .mob a:active,.mob a:hover{color:#5FE0A0}
 .mob .btn{margin-top:1.4rem;font-size:.95rem}
 
-/* ============================================================
-   5. HERO
-============================================================ */
+/* hero */
 .hero{min-height:100vh;min-height:100svh;display:flex;align-items:center;overflow:hidden;
-  padding:clamp(120px,20vw,170px) 0 clamp(70px,12vw,120px);
-  background:linear-gradient(150deg,#06203A,#0A2540 55%,#0B4035)}
+  padding:clamp(120px,20vw,170px) 0 clamp(70px,12vw,120px);background:linear-gradient(150deg,#06203A,#0A2540 55%,#0B4035)}
 .hero-media{position:absolute;inset:-5% 0 -12%;z-index:0;will-change:transform}
 .hero-media .ph{width:100%;height:100%}
 .hero-veil{position:absolute;inset:0;z-index:1;
   background:linear-gradient(100deg,rgba(5,20,38,.95) 0%,rgba(6,27,50,.86) 40%,rgba(7,38,58,.62) 72%,rgba(9,55,48,.5) 100%)}
 .hero-grid{position:absolute;inset:0;z-index:1;opacity:.13;
-  background-image:linear-gradient(rgba(255,255,255,.4) 1px,transparent 1px),
-                   linear-gradient(90deg,rgba(255,255,255,.4) 1px,transparent 1px);
-  background-size:70px 70px;
-  -webkit-mask-image:radial-gradient(circle at 70% 40%,#000,transparent 72%);
-          mask-image:radial-gradient(circle at 70% 40%,#000,transparent 72%)}
+  background-image:linear-gradient(rgba(255,255,255,.4) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.4) 1px,transparent 1px);
+  background-size:70px 70px;-webkit-mask-image:radial-gradient(circle at 70% 40%,#000,transparent 72%);mask-image:radial-gradient(circle at 70% 40%,#000,transparent 72%)}
 .hero-in{position:relative;z-index:3;max-width:900px;color:#fff}
 .hero h1{color:#fff;margin:1.25rem 0 1.35rem}
-.hero h1 em{font-style:normal;background:linear-gradient(100deg,#46B0FF,#5FE0A0);
-  -webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1 em{font-style:normal;background:linear-gradient(100deg,#46B0FF,#5FE0A0);-webkit-background-clip:text;background-clip:text;color:transparent}
 .hero p.lead{color:rgba(255,255,255,.84);font-size:clamp(1rem,2.6vw,1.2rem);max-width:600px}
 .hero .eyebrow{color:#9FD8FF;background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.26);backdrop-filter:blur(8px)}
 .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2.1rem}
@@ -224,9 +219,7 @@ header.stuck .burger span{background:var(--navy)}
 @media(min-width:1180px){.float-badge{display:block}}
 @media(max-height:620px){.scroll-cue{display:none}}
 
-/* ============================================================
-   6. MARQUEE
-============================================================ */
+/* marquee */
 .marq{background:var(--navy);padding:16px 0;overflow:hidden;position:relative}
 .marq::before,.marq::after{content:"";position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
 .marq::before{left:0;background:linear-gradient(90deg,var(--navy),transparent)}
@@ -238,9 +231,7 @@ header.stuck .burger span{background:var(--navy)}
   font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
 .marq-item svg{width:16px;height:16px;color:#5FE0A0;flex:none}
 
-/* ============================================================
-   7. SERVICES
-============================================================ */
+/* services */
 .g3{display:grid;gap:clamp(16px,2.2vw,26px);grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr))}
 .svc{padding:clamp(1.6rem,4vw,2.2rem) clamp(1.3rem,3.5vw,2rem);border-radius:22px;background:#fff;
   border:1px solid var(--line);position:relative;overflow:hidden;
@@ -256,17 +247,14 @@ header.stuck .burger span{background:var(--navy)}
 .svc:nth-child(even) .ic{background:linear-gradient(140deg,var(--green-l),#fff);border-color:#CFEEDD;color:var(--green-d)}
 .svc:hover .ic{transform:rotate(-8deg) scale(1.07);background:linear-gradient(140deg,var(--blue),var(--green));color:#fff}
 .svc .ic svg{width:27px;height:27px}
-.svc h3{margin-bottom:.5rem}
-.svc p{font-size:.94rem}
+.svc h3{margin-bottom:.5rem}.svc p{font-size:.94rem}
 .svc .more{display:inline-flex;align-items:center;gap:.4rem;margin-top:1.1rem;font-weight:800;font-size:.84rem;
   color:var(--blue);opacity:0;transform:translateY(8px);transition:.5s var(--ease)}
 .svc:hover .more{opacity:1;transform:none}
 .svc .num{position:absolute;top:.9rem;right:1.2rem;font-family:'Sora';font-size:2.4rem;font-weight:800;color:var(--navy);opacity:.05}
 @media(hover:none){.svc .more{opacity:1;transform:none}}
 
-/* ============================================================
-   8. ABOUT
-============================================================ */
+/* about */
 .split{display:grid;gap:clamp(34px,5vw,70px);align-items:center;grid-template-columns:1fr}
 @media(min-width:950px){.split{grid-template-columns:1.02fr 1fr}}
 .art-wrap{position:relative;max-width:620px;margin-inline:auto;width:100%}
@@ -279,12 +267,10 @@ header.stuck .burger span{background:var(--navy)}
 .exp-chip{position:absolute;right:14px;bottom:14px;background:rgba(255,255,255,.94);backdrop-filter:blur(10px);
   border-radius:16px;padding:.85rem 1rem;display:flex;align-items:center;gap:.75rem;box-shadow:var(--shadow-m);z-index:3}
 .exp-chip b{font-family:'Sora';font-size:clamp(1.5rem,4vw,1.9rem);color:var(--blue);line-height:1}
-.exp-chip span{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);
-  display:block;max-width:84px;line-height:1.3}
+.exp-chip span{font-size:.68rem;font-weight:800;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);display:block;max-width:84px;line-height:1.3}
 .ticks{margin:1.6rem 0;display:grid;gap:.8rem}
 .ticks li{display:flex;gap:.8rem;align-items:flex-start;font-weight:600;color:var(--ink);font-size:.95rem}
-.ticks i{flex:none;width:25px;height:25px;border-radius:50%;background:var(--green-l);color:var(--green-d);
-  display:grid;place-items:center;margin-top:3px}
+.ticks i{flex:none;width:25px;height:25px;border-radius:50%;background:var(--green-l);color:var(--green-d);display:grid;place-items:center;margin-top:3px}
 .ticks i svg{width:13px;height:13px}
 .bars{display:grid;gap:1.15rem;margin-top:1.8rem}
 .bar-h{display:flex;justify-content:space-between;font-weight:800;font-size:.86rem;color:var(--navy);margin-bottom:.45rem}
@@ -292,9 +278,7 @@ header.stuck .burger span{background:var(--navy)}
 .bar>i{display:block;height:100%;width:0;border-radius:10px;
   background:linear-gradient(90deg,var(--blue),var(--green));transition:width 1.8s var(--ease)}
 
-/* ============================================================
-   9. STATS
-============================================================ */
+/* stats */
 .stats{display:grid;gap:1px;background:var(--line);border-radius:22px;overflow:hidden;
   grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr));box-shadow:var(--shadow-m);border:1px solid var(--line)}
 .stat{background:#fff;padding:clamp(1.6rem,4vw,2.4rem) 1rem;text-align:center;transition:background .5s}
@@ -303,9 +287,7 @@ header.stuck .burger span{background:var(--navy)}
 .stat b i{font-style:normal;color:var(--green)}
 .stat p{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;margin-top:.5rem;color:var(--muted)}
 
-/* ============================================================
-   10. PROCESS
-============================================================ */
+/* process */
 .proc{display:grid;gap:clamp(26px,3vw,28px);grid-template-columns:repeat(auto-fit,minmax(min(230px,100%),1fr));position:relative}
 .proc::before{content:"";position:absolute;top:44px;left:8%;right:8%;height:2px;
   background:repeating-linear-gradient(90deg,#CFE0F7 0 10px,transparent 10px 20px);z-index:0}
@@ -320,12 +302,9 @@ header.stuck .burger span{background:var(--navy)}
 .step .n{position:absolute;top:-9px;right:-9px;width:29px;height:29px;border-radius:50%;
   background:linear-gradient(135deg,var(--blue),var(--green));color:#fff;display:grid;place-items:center;
   font-size:.76rem;font-weight:800;box-shadow:0 8px 16px -8px rgba(14,107,232,.9)}
-.step h3{font-size:1.06rem;margin-bottom:.45rem}
-.step p{font-size:.9rem}
+.step h3{font-size:1.06rem;margin-bottom:.45rem}.step p{font-size:.9rem}
 
-/* ============================================================
-   11. PROJECTS
-============================================================ */
+/* projects */
 .gal{display:grid;gap:clamp(14px,2vw,24px);grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr))}
 .shot{position:relative;border-radius:20px;overflow:hidden;background:#fff;border:1px solid var(--line);
   box-shadow:var(--shadow-s);transition:transform .7s var(--ease),box-shadow .7s var(--ease)}
@@ -343,14 +322,9 @@ header.stuck .burger span{background:var(--navy)}
 .shot .tag{position:absolute;top:.9rem;left:.9rem;z-index:4;background:rgba(255,255,255,.94);backdrop-filter:blur(8px);
   padding:.35rem .8rem;border-radius:100px;font-size:.68rem;font-weight:800;letter-spacing:.09em;
   text-transform:uppercase;color:var(--blue);box-shadow:var(--shadow-s)}
-@media(hover:none){
-  .shot .ov{opacity:1}
-  .shot .ov h3,.shot .ov p{transform:none}
-}
+@media(hover:none){.shot .ov{opacity:1}.shot .ov h3,.shot .ov p{transform:none}}
 
-/* ============================================================
-   12. TESTIMONIALS
-============================================================ */
+/* testimonials */
 .quotes{display:grid;max-width:900px;margin-inline:auto}
 .q{grid-area:1/1;opacity:0;transform:translateY(24px) scale(.985);pointer-events:none;
   transition:opacity .8s var(--ease),transform .8s var(--ease);text-align:center}
@@ -362,34 +336,26 @@ header.stuck .burger span{background:var(--navy)}
 .q .av{width:52px;height:52px;border-radius:50%;overflow:hidden;flex:none;display:grid;place-items:center;
   font-family:'Sora';font-weight:800;color:#fff;font-size:1.05rem;
   background:linear-gradient(135deg,var(--blue),var(--green));box-shadow:var(--shadow-s);position:relative}
-.q .av .ph{position:absolute;inset:0;border-radius:50%;background:transparent}
-.q .av .ph::after{display:none}
-.q .who b{display:block;color:var(--navy);font-size:.95rem}
-.q .who span{font-size:.8rem;color:var(--muted)}
+.q .av .ph{position:absolute;inset:0;border-radius:50%;background:transparent}.q .av .ph::after{display:none}
+.q .who b{display:block;color:var(--navy);font-size:.95rem}.q .who span{font-size:.8rem;color:var(--muted)}
 .dots{display:flex;justify-content:center;gap:.5rem;margin-top:2.2rem}
-.dots button{width:10px;height:10px;border-radius:50%;border:0;background:var(--line);cursor:pointer;
-  transition:.5s var(--ease);padding:0}
+.dots button{width:10px;height:10px;border-radius:50%;border:0;background:var(--line);cursor:pointer;transition:.5s var(--ease);padding:0}
 .dots button.on{width:32px;border-radius:10px;background:linear-gradient(90deg,var(--blue),var(--green))}
 
-/* ============================================================
-   13. QUOTE / FORMS
-============================================================ */
+/* quote / forms */
 .quote-sec{background:linear-gradient(140deg,#06203A,#0A2540 42%,#0B4035);overflow:hidden}
 .quote-sec::before{content:"";position:absolute;inset:0;opacity:.32;
   background:radial-gradient(700px 420px at 12% 18%,rgba(14,107,232,.55),transparent 62%),
-             radial-gradient(640px 420px at 88% 82%,rgba(20,168,92,.5),transparent 62%)}
+  radial-gradient(640px 420px at 88% 82%,rgba(20,168,92,.5),transparent 62%)}
 .quote-sec>*{position:relative;z-index:1}
-.quote-sec h2,.quote-sec h3{color:#fff}
-.quote-sec p{color:rgba(255,255,255,.74)}
+.quote-sec h2,.quote-sec h3{color:#fff}.quote-sec p{color:rgba(255,255,255,.74)}
 .q-grid{display:grid;gap:clamp(30px,5vw,64px);align-items:start;grid-template-columns:1fr}
 @media(min-width:980px){.q-grid{grid-template-columns:.9fr 1.1fr}}
 .perk{display:flex;gap:.95rem;padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
 .perk i{flex:none;width:42px;height:42px;border-radius:13px;display:grid;place-items:center;
   background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);color:#5FE0A0}
 .perk i svg{width:19px;height:19px}
-.perk b{color:#fff;display:block;font-size:.96rem;font-family:'Sora'}
-.perk p{font-size:.86rem;margin-top:.1rem}
-
+.perk b{color:#fff;display:block;font-size:.96rem;font-family:'Sora'}.perk p{font-size:.86rem;margin-top:.1rem}
 .form-card{background:rgba(255,255,255,.98);backdrop-filter:blur(14px);border-radius:24px;
   padding:clamp(1.3rem,4vw,2.5rem);box-shadow:var(--shadow-l);border:1px solid rgba(255,255,255,.6)}
 .form-card h3{color:var(--navy)}
@@ -404,36 +370,29 @@ header.stuck .burger span{background:var(--navy)}
 .field select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235E7489' stroke-width='2.4' stroke-linecap='round'><path d='m6 9 6 6 6-6'/></svg>");
   background-repeat:no-repeat;background-position:right .9rem center;background-size:16px;padding-right:2.4rem}
 .field textarea{min-height:112px;resize:vertical}
-.field input:focus,.field select:focus,.field textarea:focus{
-  border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(14,107,232,.12)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(14,107,232,.12)}
 .field input::placeholder,.field textarea::placeholder{color:#9BAEC2}
 .form-card .btn{width:100%;margin-top:.4rem}
 .note{font-size:.76rem;color:var(--muted);text-align:center;margin-top:.9rem}
 .ok{display:none;align-items:center;gap:.6rem;background:var(--green-l);border:1px solid #BFE9D2;color:var(--green-d);
   padding:.85rem 1rem;border-radius:12px;font-weight:700;font-size:.88rem;margin-bottom:1.1rem}
-.ok svg{flex:none}
-.ok.show{display:flex;animation:pop .6s var(--ease)}
+.ok svg{flex:none}.ok.show{display:flex;animation:pop .6s var(--ease)}
 @keyframes pop{from{opacity:0;transform:translateY(-10px) scale(.96)}to{opacity:1;transform:none}}
 
-/* ============================================================
-   14. FAQ
-============================================================ */
+/* faq */
 .faq{max-width:860px;margin-inline:auto;display:grid;gap:.8rem}
 .fq{border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden;transition:box-shadow .5s,border-color .5s}
 .fq.open{box-shadow:var(--shadow-m);border-color:#CFE0F7}
 .fq button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:.9rem;text-align:left;
   padding:1.1rem 1.15rem;background:none;border:0;cursor:pointer;font-family:'Sora';font-weight:700;
   font-size:clamp(.94rem,2.6vw,1.01rem);color:var(--navy);line-height:1.4}
-.fq .pm{flex:none;width:30px;height:30px;border-radius:9px;background:var(--blue-l);color:var(--blue);
-  display:grid;place-items:center;transition:.5s var(--ease)}
+.fq .pm{flex:none;width:30px;height:30px;border-radius:9px;background:var(--blue-l);color:var(--blue);display:grid;place-items:center;transition:.5s var(--ease)}
 .fq .pm svg{width:15px;height:15px}
 .fq.open .pm{background:linear-gradient(135deg,var(--blue),var(--green));color:#fff;transform:rotate(135deg)}
 .fq .ans{max-height:0;overflow:hidden;transition:max-height .6s var(--ease)}
 .fq .ans p{padding:0 1.15rem 1.25rem;font-size:.93rem}
 
-/* ============================================================
-   15. CONTACT
-============================================================ */
+/* contact */
 .c-grid{display:grid;gap:clamp(26px,4vw,54px);grid-template-columns:1fr}
 @media(min-width:980px){.c-grid{grid-template-columns:1fr 1.1fr}}
 .c-cards{display:grid;gap:.9rem;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr))}
@@ -454,28 +413,21 @@ header.stuck .burger span{background:var(--navy)}
 .cover .cv b{color:#fff;font-family:'Sora';font-size:1.02rem}
 .cover .cv span{color:rgba(255,255,255,.75);font-size:.84rem}
 
-/* ============================================================
-   16. CTA BAND + FOOTER
-============================================================ */
+/* band + footer */
 .band{background:linear-gradient(110deg,var(--blue),#0C7FD4 55%,var(--green));color:#fff;
   border-radius:26px;padding:clamp(2rem,6vw,4rem) clamp(1.3rem,5vw,3rem);text-align:center;position:relative;
   overflow:hidden;box-shadow:0 40px 70px -40px rgba(14,107,232,.9)}
 .band::after{content:"";position:absolute;inset:-60% -10% auto auto;width:460px;height:460px;border-radius:50%;
   background:radial-gradient(circle,rgba(255,255,255,.22),transparent 68%)}
-.band h2{color:#fff;position:relative}
-.band p{color:rgba(255,255,255,.9);max-width:560px;margin:1rem auto 1.9rem;position:relative}
-.band .cta-row{position:relative;display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.band h2{color:#fff;position:relative}.band p{color:rgba(255,255,255,.9);max-width:560px;margin:1rem auto 1.9rem;position:relative}
+.cta-row{position:relative;display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
 .band .btn{flex:1 1 190px;max-width:260px}
-
 footer{background:var(--navy);color:rgba(255,255,255,.62);padding:clamp(52px,8vw,92px) 0 0}
 .f-grid{display:grid;gap:2.2rem;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));padding-bottom:2.6rem}
-footer h4{color:#fff;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1.1rem;
-  font-family:'Manrope';font-weight:800}
-footer a{color:rgba(255,255,255,.62);font-size:.92rem;display:inline-block;padding:.26rem 0;
-  transition:color .35s,transform .35s var(--ease)}
+footer h4{color:#fff;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1.1rem;font-family:'Manrope';font-weight:800}
+footer a{color:rgba(255,255,255,.62);font-size:.92rem;display:inline-block;padding:.26rem 0;transition:color .35s,transform .35s var(--ease)}
 footer a:hover{color:#5FE0A0;transform:translateX(5px)}
-footer .logo{color:#fff;margin-bottom:1rem}
-footer .logo:hover{transform:none}
+footer .logo{color:#fff;margin-bottom:1rem}footer .logo:hover{transform:none}
 footer p{font-size:.91rem;color:rgba(255,255,255,.55)}
 .socials{display:flex;gap:.55rem;margin-top:1.2rem;flex-wrap:wrap}
 .socials a{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
@@ -484,32 +436,22 @@ footer p{font-size:.91rem;color:rgba(255,255,255,.55)}
 .socials svg{width:17px;height:17px}
 .f-bot{border-top:1px solid rgba(255,255,255,.1);padding:1.3rem 0;display:flex;flex-wrap:wrap;gap:.7rem;
   justify-content:space-between;font-size:.8rem}
-
 #top{position:fixed;right:16px;bottom:16px;z-index:800;width:46px;height:46px;border-radius:50%;border:0;
   background:linear-gradient(135deg,var(--blue),var(--green));color:#fff;cursor:pointer;display:grid;place-items:center;
   box-shadow:var(--shadow-m);opacity:0;transform:translateY(20px) scale(.8);pointer-events:none;transition:.6s var(--ease)}
 #top.on{opacity:1;transform:none;pointer-events:auto}
 @media(min-width:700px){#top{right:22px;bottom:22px;width:50px;height:50px}}
-
-@media(max-width:1000px){
-  .links,.nav>.btn{display:none}
-  .burger{display:grid}
-}
+@media(max-width:1000px){.links,.nav>.btn{display:none}.burger{display:grid}}
 </style>
 </head>
 <body>
 
 <div id="bar"></div>
 
-<!-- ================= HEADER ================= -->
+<!-- skeleton — all text filled by JS from BIZ config -->
 <header id="hdr">
   <div class="wrap nav">
-    <a href="#home" class="logo">
-      <span class="mark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 11 12 3l10 8"/><path d="M5 10v10h14V10"/><path d="M9.5 20v-6h5v6"/></svg>
-      </span>
-      <span>The Perfect Roofs<small>Roofing Experts</small></span>
-    </a>
+    <a href="#home" class="logo" id="logoHeader"></a>
     <nav class="links">
       <a href="#home" class="active">Home</a>
       <a href="#services">Services</a>
@@ -519,9 +461,7 @@ footer p{font-size:.91rem;color:rgba(255,255,255,.55)}
       <a href="#faq">FAQ</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a href="#quote" class="btn btn-g">Get a Quote
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
+    <a href="#quote" class="btn btn-g" id="headerCta"></a>
     <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -530,10 +470,9 @@ footer p{font-size:.91rem;color:rgba(255,255,255,.55)}
   <a href="#home">Home</a><a href="#services">Services</a><a href="#about">About</a>
   <a href="#process">Process</a><a href="#projects">Projects</a>
   <a href="#testimonials">Reviews</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
-  <a href="#quote" class="btn btn-g">Get a Free Quote</a>
+  <a href="#quote" class="btn btn-g" id="mobCta"></a>
 </div>
 
-<!-- ================= HERO ================= -->
 <section class="hero" id="home">
   <div class="hero-media" id="heroMedia">
     <div class="ph">
@@ -545,56 +484,28 @@ footer p{font-size:.91rem;color:rgba(255,255,255,.55)}
   </div>
   <div class="hero-veil"></div>
   <div class="hero-grid"></div>
-
-  <div class="wrap hero-in">
-    <span class="eyebrow rv" style="--d:100ms"><i></i> Licensed · Insured · Warranty Backed</span>
-    <h1>
-      <span class="line-mask" style="--d:220ms"><span>Roofs Built to</span></span>
-      <span class="line-mask" style="--d:340ms"><span><em>Last a Lifetime</em></span></span>
-    </h1>
-    <p class="lead rv" style="--d:520ms">
-      From the first inspection to the final nail, we deliver precision craftsmanship,
-      premium materials and a finish that protects everything beneath it.
-    </p>
-    <div class="hero-cta rv" style="--d:660ms">
-      <a href="#quote" class="btn btn-p">Get a Free Quote
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      <a href="#services" class="btn btn-o">Explore Services</a>
-    </div>
-    <div class="hero-stats rv" style="--d:800ms">
-      <div><b class="cnt" data-to="1200" data-suf="+">0</b><span>Roofs Completed</span></div>
-      <div><b class="cnt" data-to="25" data-suf="+">0</b><span>Years Experience</span></div>
-      <div><b class="cnt" data-to="98" data-suf="%">0</b><span>Happy Clients</span></div>
-    </div>
-  </div>
-
+  <div class="wrap hero-in" id="heroContent"></div>
   <div class="float-badge">
     <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v6c0 5-3.4 7.8-8 9-4.6-1.2-8-4-8-9V7z"/><path d="m9 12 2 2 4-4"/></svg></div>
     <h4>Lifetime Workmanship</h4>
     <p>Every installation is covered by a written warranty and a free annual check-up.</p>
   </div>
-
   <div class="scroll-cue"><span>Scroll</span><div class="mouse"></div></div>
 </section>
 
-<!-- ================= MARQUEE ================= -->
 <div class="marq"><div class="marq-track" id="marq"></div></div>
 
-<!-- ================= SERVICES ================= -->
 <section class="sec" id="services">
   <div class="wrap">
     <div class="sec-head ctr">
       <span class="eyebrow rv"><i></i> What We Do</span>
       <h2 class="rv" style="--d:90ms">Complete Roofing <span class="grad">Solutions</span></h2>
-      <p class="rv" style="--d:180ms">One team for everything above your head — installation, repair, protection and
-        long-term care, all finished to the same exacting standard.</p>
+      <p class="rv" style="--d:180ms">One team for everything above your head — installation, repair, protection and long-term care, all finished to the same exacting standard.</p>
     </div>
     <div class="g3" id="svcGrid"></div>
   </div>
 </section>
 
-<!-- ================= ABOUT ================= -->
 <section class="sec sec-soft" id="about">
   <div class="wrap split">
     <div>
@@ -605,40 +516,10 @@ footer p{font-size:.91rem;color:rgba(255,255,255,.55)}
         <span class="art-deco b"></span>
       </div>
     </div>
-    <div>
-      <span class="eyebrow g rv"><i></i> About Us</span>
-      <h2 class="rv" style="--d:90ms">Craftsmanship You Can <span class="grad">Stand Under</span></h2>
-      <p class="rv" style="--d:170ms">The Perfect Roofs was built on a simple belief: a roof should never be something
-        you think about twice. Our crews combine traditional craft with modern materials and an
-        obsessive attention to detail — the kind you only notice when it's missing.</p>
-      <ul class="ticks">
-        <li class="rv l" style="--d:240ms"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L19 7"/></svg></i>Fully licensed, insured and safety-certified crews</li>
-        <li class="rv l" style="--d:320ms"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L19 7"/></svg></i>Premium materials from trusted manufacturers</li>
-        <li class="rv l" style="--d:400ms"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L19 7"/></svg></i>Clear, itemised pricing — no surprises, ever</li>
-        <li class="rv l" style="--d:480ms"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L19 7"/></svg></i>Spotless site clean-up on the day we finish</li>
-      </ul>
-      <div class="bars">
-        <div class="rv" style="--d:300ms">
-          <div class="bar-h"><span>Installation Quality</span><span>98%</span></div>
-          <div class="bar"><i data-w="98"></i></div>
-        </div>
-        <div class="rv" style="--d:380ms">
-          <div class="bar-h"><span>On-Time Completion</span><span>95%</span></div>
-          <div class="bar"><i data-w="95"></i></div>
-        </div>
-        <div class="rv" style="--d:460ms">
-          <div class="bar-h"><span>Client Satisfaction</span><span>99%</span></div>
-          <div class="bar"><i data-w="99"></i></div>
-        </div>
-      </div>
-      <a href="#quote" class="btn btn-p rv" style="--d:540ms;margin-top:1.9rem">Request an Inspection
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
+    <div id="aboutText"></div>
   </div>
 </section>
 
-<!-- ================= STATS ================= -->
 <section class="sec" style="padding-top:clamp(56px,8vw,100px);padding-bottom:0">
   <div class="wrap">
     <div class="stats rv z">
@@ -650,20 +531,17 @@ footer p{font-size:.91rem;color:rgba(255,255,255,.55)}
   </div>
 </section>
 
-<!-- ================= PROCESS ================= -->
 <section class="sec sec-soft" id="process" style="margin-top:clamp(56px,8vw,100px)">
   <div class="wrap">
     <div class="sec-head ctr">
       <span class="eyebrow rv"><i></i> How It Works</span>
       <h2 class="rv" style="--d:90ms">A Simple, <span class="grad">Transparent</span> Process</h2>
-      <p class="rv" style="--d:180ms">Four clear steps from first call to final handshake — you always know exactly
-        what happens next.</p>
+      <p class="rv" style="--d:180ms">Four clear steps from first call to final handshake — you always know exactly what happens next.</p>
     </div>
     <div class="proc" id="procGrid"></div>
   </div>
 </section>
 
-<!-- ================= PROJECTS ================= -->
 <section class="sec" id="projects">
   <div class="wrap">
     <div class="sec-head ctr">
@@ -675,7 +553,6 @@ footer p{font-size:.91rem;color:rgba(255,255,255,.55)}
   </div>
 </section>
 
-<!-- ================= TESTIMONIALS ================= -->
 <section class="sec sec-soft" id="testimonials">
   <div class="wrap">
     <div class="sec-head ctr">
@@ -687,69 +564,10 @@ footer p{font-size:.91rem;color:rgba(255,255,255,.55)}
   </div>
 </section>
 
-<!-- ================= QUOTE ================= -->
 <section class="sec quote-sec" id="quote">
-  <div class="wrap q-grid">
-    <div>
-      <span class="eyebrow rv" style="color:#9FD8FF;background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25)"><i></i> Free Estimate</span>
-      <h2 class="rv" style="--d:90ms;margin:1.1rem 0 1rem">Get Your Roof <span class="grad">Quoted Today</span></h2>
-      <p class="rv" style="--d:170ms">Tell us a little about your property and we'll come back with a clear,
-        itemised estimate — no obligation, no pressure.</p>
-      <div style="margin-top:1.8rem">
-        <div class="perk rv l" style="--d:240ms">
-          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></i>
-          <div><b>24-Hour Response</b><p>We reply to every request within one business day.</p></div>
-        </div>
-        <div class="perk rv l" style="--d:320ms">
-          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7h18v12H3z"/><path d="M3 11h18M7 15h4"/></svg></i>
-          <div><b>Fixed, Itemised Pricing</b><p>Every line explained before a single tile is lifted.</p></div>
-        </div>
-        <div class="perk rv l" style="--d:400ms">
-          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 4v6c0 5-3.4 7.8-8 9-4.6-1.2-8-4-8-9V7z"/><path d="m9 12 2 2 4-4"/></svg></i>
-          <div><b>Warranty Included</b><p>Materials and workmanship covered in writing.</p></div>
-        </div>
-        <div class="perk rv l" style="--d:480ms;border-bottom:0">
-          <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/></svg></i>
-          <div><b>Residential & Commercial</b><p>Any roof type, any size, same standard of finish.</p></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-card rv r" style="--d:200ms">
-      <h3 style="margin-bottom:.35rem">Request a Free Quote</h3>
-      <p style="font-size:.9rem;margin-bottom:1.5rem">Fill in the details below and we'll be in touch shortly.</p>
-      <div class="ok" id="okQuote">
-        <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L19 7"/></svg>
-        Thank you! Your quote request has been received.
-      </div>
-      <form id="quoteForm" novalidate>
-        <div class="frow">
-          <div class="field"><label for="qn">Full Name</label><input id="qn" type="text" name="name" placeholder="Your name" required></div>
-          <div class="field"><label for="qp">Phone</label><input id="qp" type="tel" name="phone" placeholder="Your phone number" required></div>
-        </div>
-        <div class="field"><label for="qe">Email Address</label><input id="qe" type="email" name="email" placeholder="you@email.com" required></div>
-        <div class="frow">
-          <div class="field"><label for="qs">Service Needed</label>
-            <select id="qs" name="service">
-              <option>Roof Installation</option><option>Roof Repair</option><option>Roof Replacement</option>
-              <option>Flat / Commercial Roofing</option><option>Gutters &amp; Drainage</option><option>Inspection &amp; Maintenance</option>
-            </select>
-          </div>
-          <div class="field"><label for="qt">Property Type</label>
-            <select id="qt" name="property"><option>Residential</option><option>Commercial</option><option>Industrial</option></select>
-          </div>
-        </div>
-        <div class="field"><label for="qm">Project Details</label><textarea id="qm" name="message" placeholder="Tell us about your roof, its age, and any issues you've noticed…"></textarea></div>
-        <button type="submit" class="btn btn-g">Send My Request
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </button>
-        <p class="note">We respect your privacy. Your details are never shared.</p>
-      </form>
-    </div>
-  </div>
+  <div class="wrap q-grid" id="quoteSection"></div>
 </section>
 
-<!-- ================= FAQ ================= -->
 <section class="sec" id="faq">
   <div class="wrap">
     <div class="sec-head ctr">
@@ -760,7 +578,6 @@ footer p{font-size:.91rem;color:rgba(255,255,255,.55)}
   </div>
 </section>
 
-<!-- ================= CONTACT ================= -->
 <section class="sec sec-soft" id="contact">
   <div class="wrap">
     <div class="sec-head ctr">
@@ -768,110 +585,17 @@ footer p{font-size:.91rem;color:rgba(255,255,255,.55)}
       <h2 class="rv" style="--d:90ms">Let's Talk About <span class="grad">Your Roof</span></h2>
       <p class="rv" style="--d:180ms">Questions, emergencies or just planning ahead — we're ready when you are.</p>
     </div>
-
-    <div class="c-grid">
-      <div>
-        <div class="c-cards">
-          <div class="c-card rv" style="--d:80ms">
-            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></i>
-            <b>Call Us</b><p>+1 (000) 000‑0000</p>
-          </div>
-          <div class="c-card rv" style="--d:160ms">
-            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></i>
-            <b>Email Us</b><p>hello@theperfectroofs.com</p>
-          </div>
-          <div class="c-card rv" style="--d:240ms">
-            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></i>
-            <b>Opening Hours</b><p>Mon – Sat · 8:00 – 18:00</p>
-          </div>
-          <div class="c-card rv" style="--d:320ms">
-            <i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></i>
-            <b>Service Coverage</b><p>Wide local &amp; surrounding areas</p>
-          </div>
-        </div>
-        <div class="cover rv z" style="--d:380ms" id="coverArt"></div>
-      </div>
-
-      <div class="form-card rv r" style="--d:200ms">
-        <h3 style="margin-bottom:.35rem">Send a Message</h3>
-        <p style="font-size:.9rem;margin-bottom:1.5rem">We usually reply the same working day.</p>
-        <div class="ok" id="okContact">
-          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 5 5L19 7"/></svg>
-          Message sent — thanks for reaching out!
-        </div>
-        <form id="contactForm" novalidate>
-          <div class="frow">
-            <div class="field"><label for="cn">Name</label><input id="cn" type="text" placeholder="Your name" required></div>
-            <div class="field"><label for="ce">Email</label><input id="ce" type="email" placeholder="you@email.com" required></div>
-          </div>
-          <div class="field"><label for="cs">Subject</label><input id="cs" type="text" placeholder="How can we help?"></div>
-          <div class="field"><label for="cm">Message</label><textarea id="cm" placeholder="Write your message here…" required></textarea></div>
-          <button type="submit" class="btn btn-p">Send Message
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </button>
-        </form>
-      </div>
-    </div>
+    <div class="c-grid" id="contactSection"></div>
   </div>
 </section>
 
-<!-- ================= CTA BAND ================= -->
 <section class="sec" style="padding-top:0">
   <div class="wrap">
-    <div class="band rv z">
-      <h2 class="rv" style="--d:100ms">Ready for a Roof That Lasts?</h2>
-      <p class="rv" style="--d:200ms">Book a free, no-obligation inspection and let's get your property protected properly.</p>
-      <div class="cta-row rv" style="--d:300ms">
-        <a href="#quote" class="btn btn-w">Get a Free Quote
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a href="#contact" class="btn btn-o" style="border-color:rgba(255,255,255,.65)">Talk to Us</a>
-      </div>
-    </div>
+    <div class="band rv z" id="ctaBand"></div>
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
-<footer>
-  <div class="wrap">
-    <div class="f-grid">
-      <div class="rv">
-        <a href="#home" class="logo">
-          <span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 11 12 3l10 8"/><path d="M5 10v10h14V10"/><path d="M9.5 20v-6h5v6"/></svg></span>
-          <span>The Perfect Roofs<small>Roofing Experts</small></span>
-        </a>
-        <p>Precision roofing, premium materials and a finish that holds up for decades — above everything you care about.</p>
-        <div class="socials">
-          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg></a>
-          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></svg></a>
-          <a href="#" aria-label="X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3l-6.6 7.6L22 21h-6l-4.3-5.6L6.6 21H3.5l7-8L2 3h6.2l3.9 5.2zm-1 16h1.7L7.6 4.8H5.8z"/></svg></a>
-          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 3.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM3 9h3v12H3zM9 9h3v1.7A3.4 3.4 0 0 1 15 9c2.6 0 4 1.7 4 4.8V21h-3v-6.6c0-1.6-.6-2.5-2-2.5s-2.2 1-2.2 2.6V21H9z"/></svg></a>
-        </div>
-      </div>
-      <div class="rv" style="--d:120ms">
-        <h4>Services</h4>
-        <a href="#services">Roof Installation</a><br><a href="#services">Roof Repair</a><br>
-        <a href="#services">Roof Replacement</a><br><a href="#services">Flat &amp; Commercial</a><br>
-        <a href="#services">Gutters &amp; Drainage</a><br><a href="#services">Inspections</a>
-      </div>
-      <div class="rv" style="--d:220ms">
-        <h4>Company</h4>
-        <a href="#about">About Us</a><br><a href="#process">Our Process</a><br>
-        <a href="#projects">Projects</a><br><a href="#testimonials">Testimonials</a><br>
-        <a href="#faq">FAQ</a><br><a href="#contact">Contact</a>
-      </div>
-      <div class="rv" style="--d:320ms">
-        <h4>Get in Touch</h4>
-        <p style="margin-bottom:1rem">Free inspections and honest advice — always.</p>
-        <a href="#quote" class="btn btn-g" style="padding:.8rem 1.4rem;font-size:.84rem">Get a Quote</a>
-      </div>
-    </div>
-    <div class="f-bot">
-      <span>© <span id="yr"></span> The Perfect Roofs. All rights reserved.</span>
-      <span>Privacy Policy · Terms of Service</span>
-    </div>
-  </div>
-</footer>
+<footer id="siteFooter"></footer>
 
 <button id="top" aria-label="Back to top">
   <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
@@ -879,24 +603,16 @@ footer p{font-size:.91rem;color:rgba(255,255,255,.55)}
 
 <script>
 /* ============================================================
-   A. PHOTO HELPER
-   Each photo = [primary, backup1, backup2 …] → final Picsum fallback
-   → if everything fails, a branded panel is shown (never broken).
-   Swap these URLs for the client's own photography later.
+   HELPERS
 ============================================================ */
 const U = id => 'https://images.unsplash.com/'+id+'?auto=format&fit=crop&w=1200&q=80';
 const P = seed => 'https://picsum.photos/seed/'+seed+'/1200/900';
-
 function photo(list, alt, cls){
   const srcs = list.slice();
   return `<div class="ph ${cls||''}">
     <img src="${srcs[0]}" data-fb="${srcs.slice(1).join('|')}" alt="${alt}"
       loading="lazy" decoding="async" onload="imgOk(this)" onerror="imgErr(this)"></div>`;
 }
-
-/* ============================================================
-   B. ICONS
-============================================================ */
 const ic = {
   install:'<path d="M3 11 12 4l9 7"/><path d="M6 10v10h12V10"/><path d="M10 20v-6h4v6"/>',
   repair:'<path d="M14.7 6.3a4 4 0 0 1-5 5L4 17v3h3l5.7-5.7a4 4 0 0 0 5-5l-2.2 2.2-2.1-2.1z"/>',
@@ -907,12 +623,69 @@ const ic = {
   call:'<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>',
   doc:'<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
   hammer:'<path d="M15 4l5 5-3 3-5-5z"/><path d="M12 7 4 15a2.8 2.8 0 0 0 4 4l8-8"/>',
-  shield:'<path d="M12 3l8 4v6c0 5-3.4 7.8-8 9-4.6-1.2-8-4-8-9V7z"/><path d="m9 12 2 2 4-4"/>'
+  shield:'<path d="M12 3l8 4v6c0 5-3.4 7.8-8 9-4.6-1.2-8-4-8-9V7z"/><path d="m9 12 2 2 4-4"/>',
+  check:'<path d="m5 12 5 5L19 7"/>',
+  arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+  phone:'<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/>',
+  mail:'<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+  clock:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
+  pin:'<path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/>',
+  star:'<path d="M12 3l2.6 5.6L21 9.5l-4.5 4.3 1.1 6.2L12 17l-5.6 3 1.1-6.2L3 9.5l6.4-.9z"/>'
 };
 const svg = (d,s=2.1)=>`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${s}" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+const roofIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 11 12 3l10 8"/><path d="M5 10v10h14V10"/><path d="M9.5 20v-6h5v6"/></svg>`;
+const socIcons = {
+  facebook:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3V6h-3c-2.2 0-4 1.8-4 4v2H8v3h2v7h3v-7h3l1-3h-4v-2c0-.6.4-1 1-1z"/></svg>',
+  instagram:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/></svg>',
+  twitter:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 3h3l-6.6 7.6L22 21h-6l-4.3-5.6L6.6 21H3.5l7-8L2 3h6.2l3.9 5.2zm-1 16h1.7L7.6 4.8H5.8z"/></svg>',
+  linkedin:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.5 3.5a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM3 9h3v12H3zM9 9h3v1.7A3.4 3.4 0 0 1 15 9c2.6 0 4 1.7 4 4.8V21h-3v-6.6c0-1.6-.6-2.5-2-2.5s-2.2 1-2.2 2.6V21H9z"/></svg>'
+};
 
 /* ============================================================
-   C. SERVICES
+   BUILD LOGO MARKUP (reusable)
+============================================================ */
+function logoMarkup(){
+  return `<span class="mark">${roofIcon}</span><span>${B()}<small>${BIZ.tagline}</small></span>`;
+}
+
+/* ============================================================
+   1. META + HEADER
+============================================================ */
+document.getElementById('pageTitle').textContent = B() + ' — ' + BIZ.tagline;
+document.getElementById('metaDesc').content = B() + ' — ' + BIZ.metaDesc;
+document.getElementById('logoHeader').innerHTML = logoMarkup();
+document.getElementById('headerCta').innerHTML = `Get a Quote ${svg(ic.arrow, 2.4)}`;
+document.getElementById('mobCta').textContent = 'Get a Free Quote';
+
+/* ============================================================
+   2. HERO
+============================================================ */
+document.getElementById('heroContent').innerHTML = `
+  <span class="eyebrow rv" style="--d:100ms"><i></i> ${BIZ.heroEyebrow}</span>
+  <h1>
+    <span class="line-mask" style="--d:220ms"><span>${BIZ.heroTitle1}</span></span>
+    <span class="line-mask" style="--d:340ms"><span><em>${BIZ.heroTitle2}</em></span></span>
+  </h1>
+  <p class="lead rv" style="--d:520ms">${BIZ.heroDesc}</p>
+  <div class="hero-cta rv" style="--d:660ms">
+    <a href="#quote" class="btn btn-p">Get a Free Quote ${svg(ic.arrow,2.4)}</a>
+    <a href="#services" class="btn btn-o">Explore Services</a>
+  </div>
+  <div class="hero-stats rv" style="--d:800ms">
+    <div><b class="cnt" data-to="1200" data-suf="+">0</b><span>Roofs Completed</span></div>
+    <div><b class="cnt" data-to="25" data-suf="+">0</b><span>Years Experience</span></div>
+    <div><b class="cnt" data-to="98" data-suf="%">0</b><span>Happy Clients</span></div>
+  </div>`;
+
+/* ============================================================
+   3. MARQUEE
+============================================================ */
+const trust = ['Licensed & Insured','Premium Materials','Lifetime Warranty','Free Inspections','Certified Crews','Emergency Repairs','Transparent Pricing','Clean Site Guarantee'];
+const starSvg = svg(ic.star,2);
+document.getElementById('marq').innerHTML = [...trust,...trust].map(t=>`<span class="marq-item">${starSvg}${t}</span>`).join('');
+
+/* ============================================================
+   4. SERVICES
 ============================================================ */
 const services = [
   ['Roof Installation','install','Brand-new roofing systems engineered for your structure, climate and style — installed right the first time.'],
@@ -927,11 +700,39 @@ document.getElementById('svcGrid').innerHTML = services.map((s,i)=>`
     <span class="num">0${i+1}</span>
     <div class="ic">${svg(ic[s[1]])}</div>
     <h3>${s[0]}</h3><p>${s[2]}</p>
-    <span class="more">Learn more ${svg('<path d="M5 12h14M13 6l6 6-6 6"/>',2.6)}</span>
+    <span class="more">Learn more ${svg(ic.arrow,2.6)}</span>
   </article>`).join('');
 
 /* ============================================================
-   D. PROCESS
+   5. ABOUT
+============================================================ */
+document.getElementById('aboutArt').innerHTML = photo([
+  U('photo-1627905646269-7f034dcc5738'), U('photo-1504307651254-35680f356dfd'),
+  U('photo-1600585154340-be6161a56a0c'), P('roofteam')
+],'Roofing crew installing new shingles');
+
+const ck = svg(ic.check, 3);
+document.getElementById('aboutText').innerHTML = `
+  <span class="eyebrow g rv"><i></i> About Us</span>
+  <h2 class="rv" style="--d:90ms">Craftsmanship You Can <span class="grad">Stand Under</span></h2>
+  <p class="rv" style="--d:170ms">${B()} was built on a simple belief: a roof should never be something
+    you think about twice. Our crews combine traditional craft with modern materials and an
+    obsessive attention to detail — the kind you only notice when it's missing.</p>
+  <ul class="ticks">
+    <li class="rv l" style="--d:240ms"><i>${ck}</i>Fully licensed, insured and safety-certified crews</li>
+    <li class="rv l" style="--d:320ms"><i>${ck}</i>Premium materials from trusted manufacturers</li>
+    <li class="rv l" style="--d:400ms"><i>${ck}</i>Clear, itemised pricing — no surprises, ever</li>
+    <li class="rv l" style="--d:480ms"><i>${ck}</i>Spotless site clean-up on the day we finish</li>
+  </ul>
+  <div class="bars">
+    <div class="rv" style="--d:300ms"><div class="bar-h"><span>Installation Quality</span><span>98%</span></div><div class="bar"><i data-w="98"></i></div></div>
+    <div class="rv" style="--d:380ms"><div class="bar-h"><span>On-Time Completion</span><span>95%</span></div><div class="bar"><i data-w="95"></i></div></div>
+    <div class="rv" style="--d:460ms"><div class="bar-h"><span>Client Satisfaction</span><span>99%</span></div><div class="bar"><i data-w="99"></i></div></div>
+  </div>
+  <a href="#quote" class="btn btn-p rv" style="--d:540ms;margin-top:1.9rem">Request an Inspection ${svg(ic.arrow,2.4)}</a>`;
+
+/* ============================================================
+   6. PROCESS
 ============================================================ */
 const steps = [
   ['Free Inspection','call','We assess every layer, photograph the findings and explain exactly what we see.'],
@@ -946,25 +747,7 @@ document.getElementById('procGrid').innerHTML = steps.map((s,i)=>`
   </div>`).join('');
 
 /* ============================================================
-   E. ABOUT + COVERAGE PHOTOS
-============================================================ */
-document.getElementById('aboutArt').innerHTML = photo([
-  U('photo-1627905646269-7f034dcc5738'),
-  U('photo-1763665814538-8ba04597286c'),
-  U('photo-1600585154340-be6161a56a0c'),
-  P('roofteam')
-],'Roofing crew installing new shingles on a pitched roof');
-
-document.getElementById('coverArt').innerHTML = photo([
-  U('photo-1480714378408-67cf0d13bc1b'),
-  U('photo-1486325212027-8081e485255e'),
-  U('photo-1449844908441-8829872d2607'),
-  P('coverage')
-],'Aerial view of a neighbourhood of rooftops') + `
-  <div class="cv"><b>Wide Service Coverage</b><span>Residential, commercial and industrial roofs</span></div>`;
-
-/* ============================================================
-   F. PROJECTS
+   7. PROJECTS
 ============================================================ */
 const projects = [
   ['Architectural Shingles','Full tear-off and re-roof with layered architectural shingles.','Residential',
@@ -974,7 +757,7 @@ const projects = [
   ['Clay Tile Restoration','Heritage tile relaid with upgraded flashing and underlay.','Premium',
     [U('photo-1523217582562-09d0def993a6'),U('photo-1613490493576-7fde63acd811'),P('proj3')]],
   ['Storm Damage Rebuild','Structural repair, new decking and complete weatherproofing.','Restoration',
-    [U('photo-1763665814538-8ba04597286c'),U('photo-1581094794329-c8112a89af12'),P('proj4')]],
+    [U('photo-1504307651254-35680f356dfd'),U('photo-1581094794329-c8112a89af12'),P('proj4')]],
   ['Solar-Ready Roofing','Reinforced decking prepared for integrated solar arrays.','Energy',
     [U('photo-1509391366360-2e959784a276'),U('photo-1508514177221-188b1cf16e9d'),P('proj5')]],
   ['Gutter & Fascia Upgrade','Seamless gutters, new fascia boards and clean drainage lines.','Drainage',
@@ -988,16 +771,7 @@ document.getElementById('gal').innerHTML = projects.map((p,i)=>`
   </article>`).join('');
 
 /* ============================================================
-   G. MARQUEE
-============================================================ */
-const trust = ['Licensed & Insured','Premium Materials','Lifetime Warranty','Free Inspections','Certified Crews',
-               'Emergency Repairs','Transparent Pricing','Clean Site Guarantee'];
-const star = svg('<path d="M12 3l2.6 5.6L21 9.5l-4.5 4.3 1.1 6.2L12 17l-5.6 3 1.1-6.2L3 9.5l6.4-.9z"/>',2);
-document.getElementById('marq').innerHTML = [...trust,...trust]
-  .map(t=>`<span class="marq-item">${star}${t}</span>`).join('');
-
-/* ============================================================
-   H. TESTIMONIALS
+   8. TESTIMONIALS
 ============================================================ */
 const tes = [
   ['The crew arrived exactly when they said, worked through the week without a single complaint from the neighbours, and left the site cleaner than they found it. The roof looks incredible.',
@@ -1009,35 +783,61 @@ const tes = [
 ];
 document.getElementById('quotes').innerHTML = tes.map((t,i)=>`
   <div class="q ${i===0?'on':''}">
-    <div class="stars">${star.repeat(5)}</div>
-    <blockquote>“${t[0]}”</blockquote>
-    <div class="who">
-      <div class="av">${t[3]}${photo(t[4], t[1]+' portrait')}</div>
-      <div style="text-align:left"><b>${t[1]}</b><span>${t[2]}</span></div>
-    </div>
+    <div class="stars">${starSvg.repeat(5)}</div>
+    <blockquote>"${t[0]}"</blockquote>
+    <div class="who"><div class="av">${t[3]}${photo(t[4], t[1]+' portrait')}</div>
+      <div style="text-align:left"><b>${t[1]}</b><span>${t[2]}</span></div></div>
   </div>`).join('');
 document.getElementById('dots').innerHTML = tes.map((_,i)=>`<button class="${i===0?'on':''}" aria-label="Review ${i+1}"></button>`).join('');
 
-let qi=0;
-const qEls=[...document.querySelectorAll('.q')], dEls=[...document.querySelectorAll('#dots button')];
-function goQ(n){ qEls[qi].classList.remove('on'); dEls[qi].classList.remove('on');
-  qi=(n+qEls.length)%qEls.length; qEls[qi].classList.add('on'); dEls[qi].classList.add('on'); }
+let qi=0;const qEls=[...document.querySelectorAll('.q')],dEls=[...document.querySelectorAll('#dots button')];
+function goQ(n){qEls[qi].classList.remove('on');dEls[qi].classList.remove('on');qi=(n+qEls.length)%qEls.length;qEls[qi].classList.add('on');dEls[qi].classList.add('on')}
 let qT=setInterval(()=>goQ(qi+1),6500);
 dEls.forEach((b,i)=>b.onclick=()=>{goQ(i);clearInterval(qT);qT=setInterval(()=>goQ(qi+1),6500)});
-
-/* swipe support for testimonials */
-(function(){
-  const el=document.getElementById('quotes'); let x0=null;
+(function(){const el=document.getElementById('quotes');let x0=null;
   el.addEventListener('touchstart',e=>x0=e.touches[0].clientX,{passive:true});
-  el.addEventListener('touchend',e=>{
-    if(x0===null)return; const dx=e.changedTouches[0].clientX-x0;
-    if(Math.abs(dx)>45){ goQ(qi+(dx<0?1:-1)); clearInterval(qT); qT=setInterval(()=>goQ(qi+1),6500); }
-    x0=null;
-  },{passive:true});
-})();
+  el.addEventListener('touchend',e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0;
+    if(Math.abs(dx)>45){goQ(qi+(dx<0?1:-1));clearInterval(qT);qT=setInterval(()=>goQ(qi+1),6500)}x0=null},{passive:true})})();
 
 /* ============================================================
-   I. FAQ
+   9. QUOTE SECTION
+============================================================ */
+document.getElementById('quoteSection').innerHTML = `
+  <div>
+    <span class="eyebrow rv" style="color:#9FD8FF;background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.25)"><i></i> Free Estimate</span>
+    <h2 class="rv" style="--d:90ms;margin:1.1rem 0 1rem">Get Your Roof <span class="grad">Quoted Today</span></h2>
+    <p class="rv" style="--d:170ms">Tell us a little about your property and we'll come back with a clear, itemised estimate — no obligation, no pressure.</p>
+    <div style="margin-top:1.8rem">
+      <div class="perk rv l" style="--d:240ms"><i>${svg(ic.clock,2.2)}</i><div><b>24-Hour Response</b><p>We reply to every request within one business day.</p></div></div>
+      <div class="perk rv l" style="--d:320ms"><i>${svg('<path d="M3 7h18v12H3z"/><path d="M3 11h18M7 15h4"/>',2.2)}</i><div><b>Fixed, Itemised Pricing</b><p>Every line explained before a single tile is lifted.</p></div></div>
+      <div class="perk rv l" style="--d:400ms"><i>${svg(ic.shield,2.2)}</i><div><b>Warranty Included</b><p>Materials and workmanship covered in writing.</p></div></div>
+      <div class="perk rv l" style="--d:480ms;border-bottom:0"><i>${svg('<path d="M4 20V10l8-6 8 6v10"/><path d="M9 20v-6h6v6"/>',2.2)}</i><div><b>Residential & Commercial</b><p>Any roof type, any size, same standard of finish.</p></div></div>
+    </div>
+  </div>
+  <div class="form-card rv r" style="--d:200ms">
+    <h3 style="margin-bottom:.35rem">Request a Free Quote</h3>
+    <p style="font-size:.9rem;margin-bottom:1.5rem">Fill in the details below and we'll be in touch shortly.</p>
+    <div class="ok" id="okQuote">${svg(ic.check,3)} Thank you! Your quote request has been received.</div>
+    <form id="quoteForm" novalidate>
+      <div class="frow">
+        <div class="field"><label for="qn">Full Name</label><input id="qn" type="text" placeholder="Your name" required></div>
+        <div class="field"><label for="qp">Phone</label><input id="qp" type="tel" placeholder="Your phone number" required></div>
+      </div>
+      <div class="field"><label for="qe">Email Address</label><input id="qe" type="email" placeholder="you@email.com" required></div>
+      <div class="frow">
+        <div class="field"><label for="qs">Service Needed</label>
+          <select id="qs">${services.map(s=>`<option>${s[0]}</option>`).join('')}</select></div>
+        <div class="field"><label for="qt">Property Type</label>
+          <select id="qt"><option>Residential</option><option>Commercial</option><option>Industrial</option></select></div>
+      </div>
+      <div class="field"><label for="qm">Project Details</label><textarea id="qm" placeholder="Tell us about your roof, its age, and any issues you've noticed…"></textarea></div>
+      <button type="submit" class="btn btn-g">Send My Request ${svg(ic.arrow,2.4)}</button>
+      <p class="note">We respect your privacy. Your details are never shared.</p>
+    </form>
+  </div>`;
+
+/* ============================================================
+   10. FAQ
 ============================================================ */
 const faqs = [
   ['How long does a typical roof replacement take?','Most residential roofs are completed in two to four days, depending on size, pitch and weather. We confirm an exact timeline in your written quote before any work begins.'],
@@ -1054,21 +854,96 @@ document.getElementById('faqList').innerHTML = faqs.map((f,i)=>`
   </div>`).join('');
 document.querySelectorAll('.fq button').forEach(b=>{
   b.addEventListener('click',()=>{
-    const fq=b.parentElement, ans=fq.querySelector('.ans'), open=fq.classList.contains('open');
-    document.querySelectorAll('.fq').forEach(o=>{
-      o.classList.remove('open'); o.querySelector('.ans').style.maxHeight=null;
-      o.querySelector('button').setAttribute('aria-expanded','false');
-    });
-    if(!open){ fq.classList.add('open'); ans.style.maxHeight=ans.scrollHeight+'px'; b.setAttribute('aria-expanded','true'); }
-  });
-});
-addEventListener('resize',()=>{
-  const o=document.querySelector('.fq.open');
-  if(o){const a=o.querySelector('.ans'); a.style.maxHeight=a.scrollHeight+'px';}
-});
+    const fq=b.parentElement,ans=fq.querySelector('.ans'),open=fq.classList.contains('open');
+    document.querySelectorAll('.fq').forEach(o=>{o.classList.remove('open');o.querySelector('.ans').style.maxHeight=null;
+      o.querySelector('button').setAttribute('aria-expanded','false')});
+    if(!open){fq.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';b.setAttribute('aria-expanded','true')}
+  })});
+addEventListener('resize',()=>{const o=document.querySelector('.fq.open');if(o){const a=o.querySelector('.ans');a.style.maxHeight=a.scrollHeight+'px'}});
 
 /* ============================================================
-   J. SCROLL REVEAL / COUNTERS / BARS
+   11. CONTACT
+============================================================ */
+document.getElementById('contactSection').innerHTML = `
+  <div>
+    <div class="c-cards">
+      <div class="c-card rv" style="--d:80ms"><i>${svg(ic.phone,2.2)}</i><b>Call Us</b><p>${BIZ.phone}</p></div>
+      <div class="c-card rv" style="--d:160ms"><i>${svg(ic.mail,2.2)}</i><b>Email Us</b><p>${BIZ.email}</p></div>
+      <div class="c-card rv" style="--d:240ms"><i>${svg(ic.clock,2.2)}</i><b>Opening Hours</b><p>${BIZ.hours}</p></div>
+      <div class="c-card rv" style="--d:320ms"><i>${svg(ic.pin,2.2)}</i><b>Service Coverage</b><p>${BIZ.coverage}</p></div>
+    </div>
+    <div class="cover rv z" style="--d:380ms">
+      ${photo([U('photo-1480714378408-67cf0d13bc1b'),U('photo-1449844908441-8829872d2607'),P('coverage')],'Aerial view of rooftops')}
+      <div class="cv"><b>Wide Service Coverage</b><span>Residential, commercial and industrial roofs</span></div>
+    </div>
+  </div>
+  <div class="form-card rv r" style="--d:200ms">
+    <h3 style="margin-bottom:.35rem">Send a Message</h3>
+    <p style="font-size:.9rem;margin-bottom:1.5rem">We usually reply the same working day.</p>
+    <div class="ok" id="okContact">${svg(ic.check,3)} Message sent — thanks for reaching out!</div>
+    <form id="contactForm" novalidate>
+      <div class="frow">
+        <div class="field"><label for="cn">Name</label><input id="cn" type="text" placeholder="Your name" required></div>
+        <div class="field"><label for="ce">Email</label><input id="ce" type="email" placeholder="you@email.com" required></div>
+      </div>
+      <div class="field"><label for="cs">Subject</label><input id="cs" type="text" placeholder="How can we help?"></div>
+      <div class="field"><label for="cm">Message</label><textarea id="cm" placeholder="Write your message here…" required></textarea></div>
+      <button type="submit" class="btn btn-p">Send Message ${svg(ic.arrow,2.4)}</button>
+    </form>
+  </div>`;
+
+/* ============================================================
+   12. CTA BAND
+============================================================ */
+document.getElementById('ctaBand').innerHTML = `
+  <h2 class="rv" style="--d:100ms">Ready for a Roof That Lasts?</h2>
+  <p class="rv" style="--d:200ms">Book a free, no-obligation inspection and let's get your property protected properly.</p>
+  <div class="cta-row rv" style="--d:300ms">
+    <a href="#quote" class="btn btn-w">Get a Free Quote ${svg(ic.arrow,2.4)}</a>
+    <a href="#contact" class="btn btn-o" style="border-color:rgba(255,255,255,.65)">Talk to Us</a>
+  </div>`;
+
+/* ============================================================
+   13. FOOTER
+============================================================ */
+const yr = new Date().getFullYear();
+let socLinks = '';
+['facebook','instagram','twitter','linkedin'].forEach(k=>{
+  if(BIZ[k] && BIZ[k]!=='') socLinks += `<a href="${BIZ[k]}" aria-label="${k}">${socIcons[k]}</a>`;
+});
+
+document.getElementById('siteFooter').innerHTML = `
+  <div class="wrap">
+    <div class="f-grid">
+      <div class="rv">
+        <a href="#home" class="logo">${logoMarkup()}</a>
+        <p>Precision roofing, premium materials and a finish that holds up for decades — above everything you care about.</p>
+        <div class="socials">${socLinks}</div>
+      </div>
+      <div class="rv" style="--d:120ms">
+        <h4>Services</h4>
+        ${services.map(s=>`<a href="#services">${s[0]}</a><br>`).join('')}
+      </div>
+      <div class="rv" style="--d:220ms">
+        <h4>Company</h4>
+        <a href="#about">About Us</a><br><a href="#process">Our Process</a><br>
+        <a href="#projects">Projects</a><br><a href="#testimonials">Testimonials</a><br>
+        <a href="#faq">FAQ</a><br><a href="#contact">Contact</a>
+      </div>
+      <div class="rv" style="--d:320ms">
+        <h4>Get in Touch</h4>
+        <p style="margin-bottom:1rem">Free inspections and honest advice — always.</p>
+        <a href="#quote" class="btn btn-g" style="padding:.8rem 1.4rem;font-size:.84rem">Get a Quote</a>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>© ${yr} ${B()}. ${BIZ.copyright}</span>
+      <span>Privacy Policy · Terms of Service</span>
+    </div>
+  </div>`;
+
+/* ============================================================
+   14. SCROLL REVEAL / COUNTERS / BARS
 ============================================================ */
 const io = new IntersectionObserver(es=>{
   es.forEach(e=>{
@@ -1083,17 +958,14 @@ const io = new IntersectionObserver(es=>{
   });
 },{threshold:.14,rootMargin:'0px 0px -6% 0px'});
 
-function obs(){ document.querySelectorAll('.rv:not(.in),.line-mask:not(.in),.cnt:not(.done)').forEach(el=>io.observe(el)); }
+function obs(){document.querySelectorAll('.rv:not(.in),.line-mask:not(.in),.cnt:not(.done)').forEach(el=>io.observe(el))}
 obs();
 
 function count(el){
-  if(el.classList.contains('done'))return; el.classList.add('done');
-  const to=+el.dataset.to, suf=el.dataset.suf||'', dur=1800, t0=performance.now();
-  (function tick(t){
-    const p=Math.min((t-t0)/dur,1), e=1-Math.pow(1-p,4);
-    el.textContent=Math.round(to*e)+suf;
-    if(p<1) requestAnimationFrame(tick);
-  })(t0);
+  if(el.classList.contains('done'))return;el.classList.add('done');
+  const to=+el.dataset.to,suf=el.dataset.suf||'',dur=1800,t0=performance.now();
+  (function tick(t){const p=Math.min((t-t0)/dur,1),e=1-Math.pow(1-p,4);
+    el.textContent=Math.round(to*e)+suf;if(p<1)requestAnimationFrame(tick)})(t0);
 }
 
 window.addEventListener('load',()=>{
@@ -1102,70 +974,58 @@ window.addEventListener('load',()=>{
 });
 
 /* ============================================================
-   K. HEADER / PROGRESS / PARALLAX
+   15. HEADER / PROGRESS / PARALLAX
 ============================================================ */
-const hdr=document.getElementById('hdr'), bar=document.getElementById('bar'),
-      heroMedia=document.getElementById('heroMedia'), topBtn=document.getElementById('top'),
+const hdr=document.getElementById('hdr'),bar=document.getElementById('bar'),
+      heroMedia=document.getElementById('heroMedia'),topBtn=document.getElementById('top'),
       navLinks=[...document.querySelectorAll('.links a')],
       secs=[...document.querySelectorAll('section[id]')];
-const canParallax = matchMedia('(min-width:900px) and (pointer:fine)').matches
-                 && !matchMedia('(prefers-reduced-motion:reduce)').matches;
+const canParallax=matchMedia('(min-width:900px) and (pointer:fine)').matches && !matchMedia('(prefers-reduced-motion:reduce)').matches;
 let ticking=false;
 function onScroll(){
-  const y=scrollY, h=Math.max(document.body.scrollHeight-innerHeight,1);
+  const y=scrollY,h=Math.max(document.body.scrollHeight-innerHeight,1);
   bar.style.width=(y/h*100)+'%';
   hdr.classList.toggle('stuck',y>60);
   topBtn.classList.toggle('on',y>700);
-  if(canParallax) heroMedia.style.transform='translate3d(0,'+(y*0.3)+'px,0)';
-  let cur='home';
-  secs.forEach(s=>{ if(y>=s.offsetTop-170) cur=s.id; });
+  if(canParallax)heroMedia.style.transform='translate3d(0,'+(y*0.3)+'px,0)';
+  let cur='home';secs.forEach(s=>{if(y>=s.offsetTop-170)cur=s.id});
   navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
   ticking=false;
 }
-addEventListener('scroll',()=>{ if(!ticking){requestAnimationFrame(onScroll);ticking=true;} },{passive:true});
+addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(onScroll);ticking=true}},{passive:true});
 onScroll();
 topBtn.onclick=()=>scrollTo({top:0,behavior:'smooth'});
 
 /* mobile nav */
-const burger=document.getElementById('burger'), mob=document.getElementById('mob');
-function setMenu(open){
-  mob.classList.toggle('open',open);
-  burger.classList.toggle('x',open);
-  burger.setAttribute('aria-expanded',open);
-  document.body.style.overflow=open?'hidden':'';
-  [...mob.children].forEach((a,i)=>a.style.transitionDelay=open?(110+i*55)+'ms':'0ms');
-}
+const burger=document.getElementById('burger'),mob=document.getElementById('mob');
+function setMenu(open){mob.classList.toggle('open',open);burger.classList.toggle('x',open);
+  burger.setAttribute('aria-expanded',open);document.body.style.overflow=open?'hidden':'';
+  [...mob.children].forEach((a,i)=>a.style.transitionDelay=open?(110+i*55)+'ms':'0ms')}
 burger.onclick=()=>setMenu(!mob.classList.contains('open'));
 mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
-addEventListener('keydown',e=>{ if(e.key==='Escape') setMenu(false); });
-addEventListener('resize',()=>{ if(innerWidth>1000 && mob.classList.contains('open')) setMenu(false); });
+addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
+addEventListener('resize',()=>{if(innerWidth>1000&&mob.classList.contains('open'))setMenu(false)});
 
 /* ============================================================
-   L. FORMS (demo handlers)
+   16. FORMS
 ============================================================ */
-function handle(formId, okId){
-  const f=document.getElementById(formId), ok=document.getElementById(okId);
+function handle(formId,okId){
+  const f=document.getElementById(formId),ok=document.getElementById(okId);
   f.addEventListener('submit',e=>{
-    e.preventDefault();
-    let valid=true, first=null;
+    e.preventDefault();let valid=true,first=null;
     f.querySelectorAll('[required]').forEach(i=>{
-      const bad=!i.value.trim() || (i.type==='email' && !/^\S+@\S+\.\S+$/.test(i.value));
-      if(bad){ valid=false; first=first||i; i.style.borderColor='#E05B5B'; i.style.background='#FFF5F5';
-        setTimeout(()=>{i.style.borderColor='';i.style.background='';},2400); }
-    });
-    if(!valid){ first && first.focus(); return; }
-    const btn=f.querySelector('button[type=submit]'), txt=btn.innerHTML;
-    btn.innerHTML='Sending…'; btn.disabled=true;
-    setTimeout(()=>{
-      btn.innerHTML=txt; btn.disabled=false; f.reset();
-      ok.classList.add('show');
-      setTimeout(()=>ok.classList.remove('show'),6000);
-    },1100);
+      const bad=!i.value.trim()||(i.type==='email'&&!/^\S+@\S+\.\S+$/.test(i.value));
+      if(bad){valid=false;first=first||i;i.style.borderColor='#E05B5B';i.style.background='#FFF5F5';
+        setTimeout(()=>{i.style.borderColor='';i.style.background=''},2400)}
+    });if(!valid){first&&first.focus();return}
+    const btn=f.querySelector('button[type=submit]'),txt=btn.innerHTML;
+    btn.innerHTML='Sending…';btn.disabled=true;
+    setTimeout(()=>{btn.innerHTML=txt;btn.disabled=false;f.reset();
+      ok.classList.add('show');setTimeout(()=>ok.classList.remove('show'),6000)},1100);
   });
 }
-handle('quoteForm','okQuote'); handle('contactForm','okContact');
+handle('quoteForm','okQuote');handle('contactForm','okContact');
 
-document.getElementById('yr').textContent=new Date().getFullYear();
 obs();
 </script>
 </body>
